@@ -612,6 +612,7 @@ function lprompt {
   col=red
   [[ $RCHOST == nq ]] && col=green
   [[ $RCHOST == sx ]] && col=green
+  [[ $RCHOST == tn ]] && col=green
   [ $EUID == 0 ] && col=red
   reset="%{$reset_color%}"
   col="${reset}%{$fg_bold[$col]%}"
