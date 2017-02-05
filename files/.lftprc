@@ -1,0 +1,2 @@
+set pget:default-n 10
+set mirror:use-pget-n 10

@@ -1,0 +1,5 @@
+\set HISTSIZE 2000
+\timing
+\set PROMPT1 '%m > '
+\set PROMPT2 '... '
+

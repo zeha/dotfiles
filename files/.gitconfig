@@ -1,0 +1,58 @@
+[user]
+	name = Christian Hofstaedtler
+	signingkey = 93052E03
+;	email = christian.hofstaedtler@deduktiva.com
+ 
+[color]
+	ui = auto
+ 
+[core]
+	excludesfile = ~/.gitignore_global
+
+[alias]
+	tree = log --graph --pretty=oneline
+	tagme = !sh -c '[ -z "$1" ] && exit 1 || git tag -u $DEBSIGN_KEYID -s v\"$1\" -m \"release \"$1\"\"' sh
+	out   = push --dry-run
+	lg    = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+	cat   = !sh -c '[ -z "$3" ] && git show $1 || git show $2:$3'
+        assume   = update-index --assume-unchanged
+        unassume = update-index --no-assume-unchanged
+        assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
+        snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
+        ours   = "!f() { git checkout --ours $@ && git add $@; }; f"
+        theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
+	cleanup = "!git branch --merged | grep -v master | xargs -n1 git branch -d"
+    k = log --graph --decorate --pretty=oneline --abbrev-commit --al
+    putz = "!git checkout master && git pull && git cleanup"
+
+[push]
+  default = current
+
+[merge]
+  keepBackup = false
+  tool = p4merge
+
+[mergetool "p4merge"]
+  cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge "\"$PWD/$BASE\"" "\"$PWD/$LOCAL\""  "\"$PWD/$REMOTE\"" "\"$PWD/$MERGED\""   
+  keepTemporaries = false
+  trustExitCode = false
+  keepBackup = false
+
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
+[user "gitlab"]
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[gitreview]
+	username = zeha
+[transfer]
+	fsckobjects = true
+[fetch]
+	fsckobjects = true
+[receive]
+	fsckobjects = true
+[credential]
+	helper = osxkeychain

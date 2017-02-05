@@ -1,0 +1,6 @@
+; This file is read (at least) by pep8.
+; We use it to set project-wide settings.
+
+[pep8]
+max-line-length = 120
+
