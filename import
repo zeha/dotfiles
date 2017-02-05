@@ -13,6 +13,7 @@ rsync -rvv \
     --exclude='.bundler' \
     --exclude='.cabal' \
     --exclude='.cache' \
+    --exclude='.caff' \
     --exclude='.cisco' \
     --exclude='.cocoapods' \
     --exclude='.config/configstore' \
@@ -34,6 +35,7 @@ rsync -rvv \
     --exclude='.gradle' \
     --exclude='.icedtea/cache' \
     --exclude='.ipython' \
+    --exclude='.irssi' \
     --exclude='.ivy2' \
     --exclude='.keybase' \
     --exclude='.keybase-installer' \
