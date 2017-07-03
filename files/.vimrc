@@ -11,7 +11,7 @@ set fo=cqrt ls=2
 
 colorscheme desert 
 let c_space_errors = 1
-" syntax on
+syntax on
 set hlsearch
 " tags=tags,./tags
 " filetype plugin indent on
