@@ -534,6 +534,7 @@ alias emacs='emacs -nw'
 export HGMERGE=vimdiff
 export LANG=en_US.UTF-8
 export LC_TIME=de_AT.UTF-8
+export LC_CTYPE=en_US.UTF-8
 unset LC_ALL
 export FULLNAME="Christian Hofstaedtler"
 export LESSHISTFILE=$HOME/.cache/lesshst

@@ -4,3 +4,4 @@ if [ ! -z "$agentpid" ]; then
 fi
 
 export PATH=/Users/ch/.cabal/bin:/Users/ch/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+export PATH="/usr/local/opt/curl/bin:$PATH"
