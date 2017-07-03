@@ -1,0 +1,7 @@
+agentpid=$(pgrep gpg-agent)
+if [ ! -z "$agentpid" ]; then
+  export GPG_AGENT_INFO=/Users/ch/.gnupg/S.gpg-agent:${agentpid}:1
+fi
+
+export PATH=/Users/ch/.cabal/bin:/Users/ch/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+export PATH="/usr/local/opt/curl/bin:$PATH"
