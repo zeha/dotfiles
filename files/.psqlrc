@@ -1,5 +1,17 @@
-\set HISTSIZE 2000
+\set QUIET 1
+\x auto
 \timing
-\set PROMPT1 '%m > '
-\set PROMPT2 '... '
 
+\pset linestyle unicode
+\pset null 'ℕ'
+
+\set HISTSIZE 200000
+\set HISTFILE ~/.psql_history- :DBNAME
+
+\set PROMPT1 '%[%033[1m%]%m%x%[%033[0m%]%# '
+\set PROMPT2 '%R ... '
+
+\set ECHO queries
+\set VERBOSITY verbose
+
+\unset QUIET
