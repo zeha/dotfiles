@@ -1,0 +1,8 @@
+image/jpeg; /Users/ch/bin/view_attachment %s
+image/pjpeg; /Users/ch/bin/view_attachment %s
+image/png; /Users/ch/bin/view_attachment %s
+image/gif; /Users/ch/bin/view_attachment %s
+application/pdf; /Users/ch/bin/view_attachment %s pdf
+application/ics; /Users/ch/bin/view_attachment %s ics
+text/html; /Users/ch/bin/view_attachment %s html
+
