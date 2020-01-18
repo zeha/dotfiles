@@ -1,0 +1,122 @@
+- Boot into Recovery, wipe partitions
+- Install Catalina
+- Create user named "install" during setup -- DO NOT sign into iCloud
+- Enable FileVault
+- Rename computer to new name in Sharing prefs
+- Create new user "ch", make admin, reboot
+- Setup iCloud in ch user
+
+- Install:
+- Xcode (app store), Numbers, Pages, Keynote, Microsoft Remote Desktop
+- iTerm2
+- Little Snitch
+- 1Password
+- Office
+
+- Start Photos.app to start originals download
+
+- Keyboard settings: Turn backlight off after 5sec, turn off "Input Sources" shortcuts, add US input source
+  - Modifier Keys: Caps Lock = Esc
+  - Control strip: remove siri, add lock screen to the left end
+- Mission Control: Hot Corners: right bottom -> Lock Screen
+- Spelling: disable autocorrect
+
+Install Office
+
+Install brew (preferably after starting Xcode):
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+sudo scutil --set HostName tl
+
+brew analytics off
+
+brew install openjdk node neomutt neovim git python postgresql yarn pinentry-mac gpg flex bison protobuf-c watch autoconf automake libtool gettext lua lua@5.1 pkg-config pssh qpdf qrencode ragel readline ripgrep ruby sipcalc swaks telnet tmux tnef tokyo-cabinet unifdef openldap findutils exiftool fish minicom lftp yamllint
+brew cask install franz visual-studio-code jetbrains-toolbox spotify mpv vlc puppetlabs/puppet/pdk puppetlabs/puppet/puppet-agent-6 bitwarden fork vmware-fusion homebrew/cask-drivers/logitech-options signal poedit firefox wireshark postman keepassx viscosity handbrake skype-for-business docker imageoptim
+brew cask install iterm2 --force
+brew tap sqitchers/sqitch
+brew install sqitch --with-postgres-support --with-sqlite-support
+
+mkdir bin Source
+
+sudo vi /etc/shells # add /usr/local/bin/fish
+chsh -s /usr/local/bin/fish
+
+Spotlight Settings:
+* Privacy: exclude ~/Source, /usr/local, /Applications/Xcode.app
+* Search Results: disable Spotlight Suggestions, Developer, Films, Bookmarks&History
+
+use Toolbox App, enable auto update, enable shell scripts into /Users/ch/bin, install PyCharm and DataGrip
+
+Setup Time Machine
+
+Enable 'Show Bluetooth in menu bar'
+Pair Keyboard, Mouse
+
+Enable 'Tap to click' in Trackpad settings
+
+Enable All accounts in Calendar.app
+Enable DotName, Deduktiva account in Mail.app
+Open Messages.app enable text message forwarding
+Open Outlook, add christian.hofstaedtler@extern.a1.at email
+
+Install https://www.citrix.com/downloads/workspace-app/
+Install https://su.airbuddy.app
+
+VSCode:
+- Install: Dracula Theme, Python, Puppet, C++, GitLens
+
+TODO:
+ - copy viscosity profile
+ - copy VPN profiles
+ - copy git, ssh, zsh, fish? config
+ - custom fonts
+ - copy files
+
+
+AIDA SSL Setup
+==============
+
+open Source/yesss/puppet/site/yesss/files/bits/sslca/dc-wien-05.crt
+Add to *System* keychain
+open certificate, set Trust -> SSL + EAP -> Always Trust
+
+run this:
+---
+require 'English'
+require 'pathname'
+
+def install_certs(path, certs)
+  if path.exist? then
+    puts "Updating #{path}"
+  else
+    return
+  end
+  File.open(path, 'w') do |file|
+    file.write certs.join("\n") << "\n"
+  end
+end
+
+keychains = %w[
+  /System/Library/Keychains/SystemRootCertificates.keychain
+]
+certs_list = `security find-certificate -a -p #{keychains.join(" ")}`
+certs = certs_list.scan(
+  /-----BEGIN CERTIFICATE-----.*?-----END CERTIFICATE-----/m,
+)
+valid_certs = certs.select do |cert|
+  IO.popen("/usr/local/opt/openssl@1.1/bin/openssl x509 -inform pem -checkend 0 -noout >/dev/null", "w") do |openssl_io|
+    openssl_io.write(cert)
+    openssl_io.close_write
+  end
+  $CHILD_STATUS.success?
+end
+valid_certs << File.read(File.expand_path("~/Source/yesss/puppet/site/yesss/files/bits/sslca/dc-wien-05.crt"))
+
+install_certs Pathname("/usr/local/etc/openssl/cert.pem"), valid_certs
+install_certs Pathname("/usr/local/etc/openssl@1.1/cert.pem"), valid_certs
+---
+
+ln -fs /usr/local/etc/openssl@1.1/cert.pem ~/.virtualenvs/yesss/lib/python3.7/site-packages/certifi/cacert.pem
+
+verify: /usr/local/opt/openssl@1.1/bin/openssl s_client -connect deva1-authgate-api.intern.ewave.at:443
+
