@@ -14,14 +14,22 @@
 	<integer>1</integer>
 	<key>AppleWindowTabbingMode</key>
 	<string>manual</string>
+	<key>CloseBookmarksWindowAfterOpening</key>
+	<true/>
 	<key>CommandSelection</key>
 	<false/>
 	<key>Default Bookmark Guid</key>
 	<string>0F101988-4CEB-4424-BA2C-08FCA9FB1F02</string>
 	<key>DisablePotentiallyInsecureEscapeSequences</key>
 	<true/>
+	<key>EnableDivisionView</key>
+	<true/>
+	<key>EnableProxyIcon</key>
+	<true/>
 	<key>HapticFeedbackForEsc</key>
 	<false/>
+	<key>HideTab</key>
+	<true/>
 	<key>HotkeyMigratedFromSingleToMulti</key>
 	<true/>
 	<key>IRMemory</key>
@@ -29,7 +37,7 @@
 	<key>LoadPrefsFromCustomFolder</key>
 	<true/>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/tmp</string>
+	<string>~</string>
 	<key>NSNavLastUserSetHideExtensionButtonState</key>
 	<false/>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
@@ -78,27 +86,31 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame NSNavPanelAutosaveName</key>
-	<string>440 434 799 448 0 0 1680 1027 </string>
-	<key>NSWindow Frame ProfilesPanel</key>
-	<string>429 592 735 382 0 0 1680 1027 </string>
-	<key>NSWindow Frame SUStatusFrame</key>
-	<string>795 733 400 129 0 0 1680 1050 </string>
-	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>2210 476 620 392 1680 0 1680 1027 </string>
+	<string>1113 559 347 181 0 0 1792 1097 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 440 990 587 0 0 1680 1027 </string>
+	<string>163 155 1305 795 0 0 1792 1097 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>323 263 990 587 0 0 1680 1027 </string>
+	<string>13 396 990 587 0 0 1792 1097 </string>
+	<key>NSWindow Frame iTerm Window 10</key>
+	<string>501 492 990 587 0 0 1792 1097 </string>
+	<key>NSWindow Frame iTerm Window 11</key>
+	<string>522 469 990 587 0 0 1792 1097 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>430 366 990 587 0 0 1680 1027 </string>
+	<string>0 474 1109 619 0 0 1792 1097 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
-	<string>640 433 990 587 0 0 1680 1027 </string>
+	<string>726 411 990 587 0 0 1792 1097 </string>
 	<key>NSWindow Frame iTerm Window 4</key>
-	<string>560 30 990 587 0 0 1680 1027 </string>
+	<string>522 18 1005 587 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 5</key>
-	<string>0 439 990 587 0 0 1680 1027 </string>
+	<string>333 0 990 587 0 0 1792 1097 </string>
 	<key>NSWindow Frame iTerm Window 6</key>
-	<string>558 440 990 587 0 0 1680 1027 </string>
+	<string>159 95 990 587 0 0 1792 1097 </string>
+	<key>NSWindow Frame iTerm Window 7</key>
+	<string>375 510 990 587 0 0 1792 1097 </string>
+	<key>NSWindow Frame iTerm Window 8</key>
+	<string>769 0 990 1097 0 0 1792 1097 </string>
+	<key>NSWindow Frame iTerm Window 9</key>
+	<string>438 510 990 587 0 0 1792 1097 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -106,6 +118,18 @@
 			<true/>
 			<key>ASCII Ligatures</key>
 			<true/>
+			<key>AWDS Pane Directory</key>
+			<string></string>
+			<key>AWDS Pane Option</key>
+			<string>No</string>
+			<key>AWDS Tab Directory</key>
+			<string></string>
+			<key>AWDS Tab Option</key>
+			<string>No</string>
+			<key>AWDS Window Directory</key>
+			<string></string>
+			<key>AWDS Window Option</key>
+			<string>No</string>
 			<key>Allow Title Reporting</key>
 			<false/>
 			<key>Ambiguous Double Width</key>
@@ -375,7 +399,7 @@
 			<key>Custom Command</key>
 			<string>No</string>
 			<key>Custom Directory</key>
-			<string>No</string>
+			<string>Recycle</string>
 			<key>Default Bookmark</key>
 			<string>No</string>
 			<key>Description</key>
@@ -403,6 +427,8 @@
 			<string>0F101988-4CEB-4424-BA2C-08FCA9FB1F02</string>
 			<key>Horizontal Spacing</key>
 			<real>1</real>
+			<key>Icon</key>
+			<integer>0</integer>
 			<key>Idle Code</key>
 			<integer>0</integer>
 			<key>Initial Use Transparency</key>
@@ -423,278 +449,180 @@
 					<key>Text</key>
 					<string>0x1f</string>
 				</dict>
-				<key>0x32-0x40000</key>
-				<dict>
-					<key>Action</key>
-					<integer>11</integer>
-					<key>Text</key>
-					<string>0x00</string>
-				</dict>
-				<key>0x33-0x40000</key>
-				<dict>
-					<key>Action</key>
-					<integer>11</integer>
-					<key>Text</key>
-					<string>0x1b</string>
-				</dict>
-				<key>0x34-0x40000</key>
-				<dict>
-					<key>Action</key>
-					<integer>11</integer>
-					<key>Text</key>
-					<string>0x1c</string>
-				</dict>
-				<key>0x35-0x40000</key>
-				<dict>
-					<key>Action</key>
-					<integer>11</integer>
-					<key>Text</key>
-					<string>0x1d</string>
-				</dict>
-				<key>0x36-0x40000</key>
+				<key>0x5e-0x60000</key>
 				<dict>
 					<key>Action</key>
 					<integer>11</integer>
 					<key>Text</key>
 					<string>0x1e</string>
 				</dict>
-				<key>0x37-0x40000</key>
-				<dict>
-					<key>Action</key>
-					<integer>11</integer>
-					<key>Text</key>
-					<string>0x1f</string>
-				</dict>
-				<key>0x38-0x40000</key>
-				<dict>
-					<key>Action</key>
-					<integer>11</integer>
-					<key>Text</key>
-					<string>0x7f</string>
-				</dict>
 				<key>0xf700-0x220000</key>
 				<dict>
 					<key>Action</key>
 					<integer>10</integer>
 					<key>Text</key>
-					<string>[1;2A</string>
+					<string>[A</string>
 				</dict>
 				<key>0xf700-0x240000</key>
 				<dict>
 					<key>Action</key>
 					<integer>10</integer>
 					<key>Text</key>
-					<string>[1;5A</string>
+					<string>[A</string>
 				</dict>
 				<key>0xf700-0x260000</key>
 				<dict>
 					<key>Action</key>
 					<integer>10</integer>
 					<key>Text</key>
-					<string>[1;6A</string>
+					<string>[A</string>
 				</dict>
 				<key>0xf700-0x280000</key>
 				<dict>
 					<key>Action</key>
-					<integer>11</integer>
+					<integer>10</integer>
 					<key>Text</key>
-					<string>0x1b 0x1b 0x5b 0x41</string>
+					<string>[A</string>
 				</dict>
 				<key>0xf701-0x220000</key>
 				<dict>
 					<key>Action</key>
 					<integer>10</integer>
 					<key>Text</key>
-					<string>[1;2B</string>
+					<string>[B</string>
 				</dict>
 				<key>0xf701-0x240000</key>
 				<dict>
 					<key>Action</key>
 					<integer>10</integer>
 					<key>Text</key>
-					<string>[1;5B</string>
+					<string>[B</string>
 				</dict>
 				<key>0xf701-0x260000</key>
 				<dict>
 					<key>Action</key>
 					<integer>10</integer>
 					<key>Text</key>
-					<string>[1;6B</string>
+					<string>[B</string>
 				</dict>
 				<key>0xf701-0x280000</key>
 				<dict>
 					<key>Action</key>
-					<integer>11</integer>
+					<integer>10</integer>
 					<key>Text</key>
-					<string>0x1b 0x1b 0x5b 0x42</string>
+					<string>[B</string>
 				</dict>
 				<key>0xf702-0x220000</key>
 				<dict>
 					<key>Action</key>
 					<integer>10</integer>
 					<key>Text</key>
-					<string>[1;2D</string>
+					<string>[D</string>
 				</dict>
 				<key>0xf702-0x240000</key>
 				<dict>
 					<key>Action</key>
 					<integer>10</integer>
 					<key>Text</key>
-					<string>[1;5D</string>
+					<string>[5D</string>
 				</dict>
 				<key>0xf702-0x260000</key>
-				<dict>
-					<key>Action</key>
-					<integer>10</integer>
-					<key>Text</key>
-					<string>[1;6D</string>
-				</dict>
-				<key>0xf702-0x280000</key>
 				<dict>
 					<key>Action</key>
 					<integer>11</integer>
 					<key>Text</key>
 					<string>0x1b 0x1b 0x5b 0x44</string>
 				</dict>
+				<key>0xf702-0x280000</key>
+				<dict>
+					<key>Action</key>
+					<integer>10</integer>
+					<key>Text</key>
+					<string>b</string>
+				</dict>
 				<key>0xf703-0x220000</key>
 				<dict>
 					<key>Action</key>
 					<integer>10</integer>
 					<key>Text</key>
-					<string>[1;2C</string>
+					<string>[C</string>
 				</dict>
 				<key>0xf703-0x240000</key>
 				<dict>
 					<key>Action</key>
 					<integer>10</integer>
 					<key>Text</key>
-					<string>[1;5C</string>
+					<string>[5C</string>
 				</dict>
 				<key>0xf703-0x260000</key>
 				<dict>
 					<key>Action</key>
 					<integer>10</integer>
 					<key>Text</key>
-					<string>[1;6C</string>
+					<string>[C</string>
 				</dict>
 				<key>0xf703-0x280000</key>
 				<dict>
 					<key>Action</key>
-					<integer>11</integer>
-					<key>Text</key>
-					<string>0x1b 0x1b 0x5b 0x43</string>
-				</dict>
-				<key>0xf704-0x20000</key>
-				<dict>
-					<key>Action</key>
 					<integer>10</integer>
 					<key>Text</key>
-					<string>[1;2P</string>
-				</dict>
-				<key>0xf705-0x20000</key>
-				<dict>
-					<key>Action</key>
-					<integer>10</integer>
-					<key>Text</key>
-					<string>[1;2Q</string>
-				</dict>
-				<key>0xf706-0x20000</key>
-				<dict>
-					<key>Action</key>
-					<integer>10</integer>
-					<key>Text</key>
-					<string>[1;2R</string>
-				</dict>
-				<key>0xf707-0x20000</key>
-				<dict>
-					<key>Action</key>
-					<integer>10</integer>
-					<key>Text</key>
-					<string>[1;2S</string>
+					<string>f</string>
 				</dict>
 				<key>0xf708-0x20000</key>
 				<dict>
 					<key>Action</key>
 					<integer>10</integer>
 					<key>Text</key>
-					<string>[15;2~</string>
+					<string>[25~</string>
 				</dict>
 				<key>0xf709-0x20000</key>
 				<dict>
 					<key>Action</key>
 					<integer>10</integer>
 					<key>Text</key>
-					<string>[17;2~</string>
+					<string>[26~</string>
 				</dict>
 				<key>0xf70a-0x20000</key>
 				<dict>
 					<key>Action</key>
 					<integer>10</integer>
 					<key>Text</key>
-					<string>[18;2~</string>
+					<string>[28~</string>
 				</dict>
 				<key>0xf70b-0x20000</key>
 				<dict>
 					<key>Action</key>
 					<integer>10</integer>
 					<key>Text</key>
-					<string>[19;2~</string>
-				</dict>
-				<key>0xf70c-0x20000</key>
-				<dict>
-					<key>Action</key>
-					<integer>10</integer>
-					<key>Text</key>
-					<string>[20;2~</string>
-				</dict>
-				<key>0xf70d-0x20000</key>
-				<dict>
-					<key>Action</key>
-					<integer>10</integer>
-					<key>Text</key>
-					<string>[21;2~</string>
-				</dict>
-				<key>0xf70e-0x20000</key>
-				<dict>
-					<key>Action</key>
-					<integer>10</integer>
-					<key>Text</key>
-					<string>[23;2~</string>
-				</dict>
-				<key>0xf70f-0x20000</key>
-				<dict>
-					<key>Action</key>
-					<integer>10</integer>
-					<key>Text</key>
-					<string>[24;2~</string>
+					<string>[29~</string>
 				</dict>
 				<key>0xf729-0x20000</key>
 				<dict>
 					<key>Action</key>
 					<integer>10</integer>
 					<key>Text</key>
-					<string>[1;2H</string>
+					<string>[H</string>
 				</dict>
 				<key>0xf729-0x40000</key>
 				<dict>
 					<key>Action</key>
-					<integer>10</integer>
+					<integer>5</integer>
 					<key>Text</key>
-					<string>[1;5H</string>
+					<string></string>
 				</dict>
 				<key>0xf72b-0x20000</key>
 				<dict>
 					<key>Action</key>
 					<integer>10</integer>
 					<key>Text</key>
-					<string>[1;2F</string>
+					<string>[F</string>
 				</dict>
 				<key>0xf72b-0x40000</key>
 				<dict>
 					<key>Action</key>
-					<integer>10</integer>
+					<integer>4</integer>
 					<key>Text</key>
-					<string>[1;5F</string>
+					<string></string>
 				</dict>
 			</dict>
 			<key>Link Color</key>
@@ -711,7 +639,7 @@
 				<real>0.0</real>
 			</dict>
 			<key>Mouse Reporting</key>
-			<true/>
+			<false/>
 			<key>Name</key>
 			<string>Customized</string>
 			<key>Non Ascii Font</key>
@@ -758,8 +686,22 @@
 			<false/>
 			<key>Shortcut</key>
 			<string></string>
+			<key>Show Status Bar</key>
+			<false/>
 			<key>Silence Bell</key>
 			<false/>
+			<key>Status Bar Layout</key>
+			<dict>
+				<key>advanced configuration</key>
+				<dict>
+					<key>algorithm</key>
+					<integer>0</integer>
+					<key>font</key>
+					<string>.AppleSystemUIFont 12</string>
+				</dict>
+				<key>components</key>
+				<array/>
+			</dict>
 			<key>Sync Title</key>
 			<false/>
 			<key>Tags</key>
@@ -790,34 +732,25 @@
 	</array>
 	<key>NoSyncAllAppVersions</key>
 	<array>
-		<string>3.3.6</string>
 		<string>3.3.7</string>
 	</array>
-	<key>NoSyncBFPRecents</key>
-	<array>
-		<string>MesloLGS Nerd Font</string>
-		<string>Monaco</string>
-	</array>
-	<key>NoSyncFrame_SessionsPreferences</key>
-	<dict>
-		<key>screenFrame</key>
-		<string>{{0, 0}, {1680, 1050}}</string>
-		<key>topLeft</key>
-		<string>{537, 899}</string>
-	</dict>
 	<key>NoSyncFrame_SharedPreferences</key>
 	<dict>
 		<key>screenFrame</key>
-		<string>{{0, 0}, {1680, 1050}}</string>
+		<string>{{0, 0}, {1792, 1120}}</string>
 		<key>topLeft</key>
-		<string>{631, 930}</string>
+		<string>{514, 688}</string>
 	</dict>
 	<key>NoSyncInstallationId</key>
-	<string>DB3E7B2C-E814-4903-A860-02AC1420F104</string>
+	<string>32618EF4-3E81-4CA7-B28F-332FC33D14BA</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>27</integer>
+	<integer>18</integer>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
+	<true/>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
+	<integer>0</integer>
 	<key>NoSyncNextAnnoyanceTime</key>
-	<real>593451482.412251</real>
+	<real>599944876.53851104</real>
 	<key>NoSyncOnboardingWindowHasBeenShown</key>
 	<true/>
 	<key>NoSyncPermissionToShowTip</key>
@@ -1311,15 +1244,7 @@
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
-				<string>currentSession.pid</string>
-				<key>nonterminalContext</key>
-				<integer>0</integer>
-			</dict>
-			<dict>
-				<key>isTerminal</key>
-				<true/>
-				<key>name</key>
-				<string>currentSession.terminalIconName</string>
+				<string>currentSession.commandLine</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -1351,14 +1276,6 @@
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
-				<string>currentSession.commandLine</string>
-				<key>nonterminalContext</key>
-				<integer>0</integer>
-			</dict>
-			<dict>
-				<key>isTerminal</key>
-				<true/>
-				<key>name</key>
 				<string>currentSession.presentationName</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
@@ -1368,14 +1285,6 @@
 				<true/>
 				<key>name</key>
 				<string>iterm2.localhostName</string>
-				<key>nonterminalContext</key>
-				<integer>0</integer>
-			</dict>
-			<dict>
-				<key>isTerminal</key>
-				<true/>
-				<key>name</key>
-				<string>currentSession.jobPid</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -1487,7 +1396,7 @@
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
-				<string>currentSession.terminalWindowName</string>
+				<string>currentSession.path</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -1495,7 +1404,7 @@
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
-				<string>currentSession.path</string>
+				<string>currentSession.pid</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -1509,19 +1418,19 @@
 			</dict>
 			<dict>
 				<key>isTerminal</key>
-				<true/>
-				<key>name</key>
-				<string>currentSession</string>
-				<key>nonterminalContext</key>
-				<integer>0</integer>
-			</dict>
-			<dict>
-				<key>isTerminal</key>
 				<false/>
 				<key>name</key>
 				<string>currentSession</string>
 				<key>nonterminalContext</key>
 				<integer>1</integer>
+			</dict>
+			<dict>
+				<key>isTerminal</key>
+				<true/>
+				<key>name</key>
+				<string>currentSession</string>
+				<key>nonterminalContext</key>
+				<integer>0</integer>
 			</dict>
 		</array>
 		<key>4</key>
@@ -1552,28 +1461,23 @@
 			</dict>
 		</array>
 	</dict>
-	<key>NoSyncSavePanelSavedSettings_SaveContents</key>
-	<dict>
-		<key>Initial Directory</key>
-		<string>/Users/ch</string>
-	</dict>
 	<key>NoSyncSearchHistory2</key>
 	<array>
-		<string>aida-documentgenerator</string>
-		<string>bobde</string>
-		<string>bibd</string>
-		<string>1674</string>
-		<string>classic</string>
-		<string>yesss!</string>
-		<string>get_subscribertype</string>
-		<string>setuptools-scm</string>
-		<string>9080</string>
-		<string>6556</string>
+		<string>TestPa</string>
+		<string>find_base</string>
+		<string>HELLO</string>
+		<string>lsp_</string>
+		<string>trigger</string>
+		<string>found next</string>
+		<string>fold</string>
+		<string>ens18</string>
+		<string>error</string>
+		<string>sign</string>
 	</array>
 	<key>NoSyncTipOfTheDayEligibilityBeganTime</key>
-	<real>592655776.99890697</real>
+	<real>598796448.25761104</real>
 	<key>OpenBookmark</key>
-	<true/>
+	<false/>
 	<key>OptionClickMovesCursor</key>
 	<false/>
 	<key>PMPrintingExpandedStateForPrint2</key>
@@ -1614,28 +1518,30 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>/Users/ch/tmp</string>
+	<string>/Users/ch/Source/dotfiles/prefs</string>
 	<key>Print In Black And White</key>
 	<true/>
 	<key>SUEnableAutomaticChecks</key>
-	<true/>
+	<false/>
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>https://iterm2.com/appcasts/final_new.xml?shard=28</string>
+	<string>https://iterm2.com/appcasts/final_new.xml?shard=13</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-12-23T14:06:50Z</date>
+	<date>2019-12-25T16:32:47Z</date>
 	<key>SUSendProfileInfo</key>
-	<false/>
-	<key>SUUpdateRelaunchingMarker</key>
 	<false/>
 	<key>SearchCommand</key>
 	<string>https://startpage.com/search?q=%@</string>
 	<key>ShowFullScreenTabBar</key>
 	<true/>
 	<key>SoundForEsc</key>
+	<false/>
+	<key>SplitPaneDimmingAmount</key>
+	<real>0.43993517287234041</real>
+	<key>StretchTabsToFillBar</key>
 	<false/>
 	<key>TabStyleWithAutomaticOption</key>
 	<integer>4</integer>
@@ -1644,6 +1550,8 @@
 		<string>Profiles</string>
 		<string>Actions</string>
 	</array>
+	<key>UseBorder</key>
+	<false/>
 	<key>VisualIndicatorForEsc</key>
 	<false/>
 	<key>WordCharacters</key>
