@@ -30,8 +30,8 @@ sudo scutil --set HostName tl
 
 brew analytics off
 
-brew install openjdk node neomutt neovim git python postgresql yarn pinentry-mac gpg flex bison protobuf-c watch autoconf automake libtool gettext lua lua@5.1 pkg-config pssh qpdf qrencode ragel readline ripgrep ruby sipcalc swaks telnet tmux tnef tokyo-cabinet unifdef openldap findutils exiftool fish minicom lftp yamllint
-brew cask install franz visual-studio-code jetbrains-toolbox spotify mpv vlc puppetlabs/puppet/pdk puppetlabs/puppet/puppet-agent-6 bitwarden fork vmware-fusion homebrew/cask-drivers/logitech-options signal poedit firefox wireshark postman keepassx viscosity handbrake skype-for-business docker imageoptim
+brew install openjdk node neomutt neovim git python postgresql yarn pinentry-mac gpg flex bison protobuf-c watch autoconf automake libtool gettext lua lua@5.1 pkg-config pssh qpdf qrencode ragel readline ripgrep ruby sipcalc swaks telnet tmux tnef tokyo-cabinet unifdef openldap findutils exiftool fish minicom lftp yamllint nmap
+brew cask install franz visual-studio-code jetbrains-toolbox spotify mpv vlc puppetlabs/puppet/pdk puppetlabs/puppet/puppet-agent-6 bitwarden fork vmware-fusion homebrew/cask-drivers/logitech-options signal poedit firefox wireshark postman keepassx viscosity handbrake skype-for-business docker imageoptim adobe-creative-cloud
 brew cask install iterm2 --force
 brew tap sqitchers/sqitch
 brew install sqitch --with-postgres-support --with-sqlite-support
