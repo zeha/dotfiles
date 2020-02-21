@@ -6,6 +6,8 @@
 	<true/>
 	<key>AboutToPasteTabsWithCancel_selection</key>
 	<integer>2</integer>
+	<key>AlternateMouseScroll</key>
+	<true/>
 	<key>AppleAntiAliasingThreshold</key>
 	<integer>1</integer>
 	<key>AppleScrollAnimationEnabled</key>
@@ -64,7 +66,7 @@
 	dWxs0g0ODxJaTlMub2JqZWN0c1YkY2xhc3OiEBGAAoAKgA3TFA0OFRkdV05TLmtleXOj
 	FhcYgAOABIAFoxobHIAGgAeACIAJWklkZW50aWZpZXJVV2lkdGhWSGlkZGVuUTAjQGjA
 	AAAAAAAI0iUmJyhaJGNsYXNzbmFtZVgkY2xhc3Nlc1xOU0RpY3Rpb25hcnmiJylYTlNP
-	YmplY3TTFA0OKy8doxYXGIADgASABaMwMRyAC4AMgAiACVExI0B0oZ2yLQ5W0iUmNzhe
+	YmplY3TTFA0OKy8doxYXGIADgASABaMwMRyAC4AMgAiACVExI0BzsZ2yLQ5W0iUmNzhe
 	TlNNdXRhYmxlQXJyYXmjNzkpV05TQXJyYXkACAARABoAJAApADIANwBJAEwAUgBUAGMA
 	aQBuAHkAgACDAIUAhwCJAJAAmACcAJ4AoACiAKYAqACqAKwArgC5AL8AxgDIANEA0gDX
 	AOIA6wD4APsBBAELAQ8BEQETARUBGQEbAR0BHwEhASMBLAExAUABRAAAAAAAAAIBAAAA
@@ -88,21 +90,21 @@
 	<key>NSWindow Frame NSNavPanelAutosaveName</key>
 	<string>1113 559 347 181 0 0 1792 1097 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>163 155 1305 795 0 0 1792 1097 </string>
+	<string>0 23 1792 1074 0 0 1792 1097 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>13 396 990 587 0 0 1792 1097 </string>
+	<string>62 440 1005 587 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 10</key>
 	<string>501 492 990 587 0 0 1792 1097 </string>
 	<key>NSWindow Frame iTerm Window 11</key>
 	<string>522 469 990 587 0 0 1792 1097 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>0 474 1109 619 0 0 1792 1097 </string>
+	<string>263 150 1425 891 0 0 1792 1097 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
-	<string>726 411 990 587 0 0 1792 1097 </string>
+	<string>336 432 990 587 0 0 1792 1097 </string>
 	<key>NSWindow Frame iTerm Window 4</key>
-	<string>522 18 1005 587 0 0 1680 1027 </string>
+	<string>524 18 1005 587 0 0 1792 1097 </string>
 	<key>NSWindow Frame iTerm Window 5</key>
-	<string>333 0 990 587 0 0 1792 1097 </string>
+	<string>591 448 990 587 0 0 1792 1097 </string>
 	<key>NSWindow Frame iTerm Window 6</key>
 	<string>159 95 990 587 0 0 1792 1097 </string>
 	<key>NSWindow Frame iTerm Window 7</key>
@@ -708,6 +710,8 @@
 			<array/>
 			<key>Terminal Type</key>
 			<string>xterm-256color</string>
+			<key>Thin Strokes</key>
+			<integer>1</integer>
 			<key>Transparency</key>
 			<real>0.0</real>
 			<key>Unlimited Scrollback</key>
@@ -734,17 +738,21 @@
 	<array>
 		<string>3.3.7</string>
 	</array>
+	<key>NoSyncBFPRecents</key>
+	<array>
+		<string>MesloLGS Nerd Font</string>
+	</array>
 	<key>NoSyncFrame_SharedPreferences</key>
 	<dict>
 		<key>screenFrame</key>
-		<string>{{0, 0}, {1792, 1120}}</string>
+		<string>{{0, 0}, {3008, 1692}}</string>
 		<key>topLeft</key>
-		<string>{514, 688}</string>
+		<string>{568, 993}</string>
 	</dict>
 	<key>NoSyncInstallationId</key>
 	<string>32618EF4-3E81-4CA7-B28F-332FC33D14BA</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>18</integer>
+	<integer>33</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -1463,16 +1471,16 @@
 	</dict>
 	<key>NoSyncSearchHistory2</key>
 	<array>
-		<string>TestPa</string>
-		<string>find_base</string>
-		<string>HELLO</string>
-		<string>lsp_</string>
-		<string>trigger</string>
-		<string>found next</string>
-		<string>fold</string>
-		<string>ens18</string>
-		<string>error</string>
-		<string>sign</string>
+		<string>runner0</string>
+		<string>192.168.101.15</string>
+		<string>212,</string>
+		<string>List of</string>
+		<string>activates</string>
+		<string>ch@zeha.at</string>
+		<string>01353</string>
+		<string>Test</string>
+		<string>test</string>
+		<string>submit</string>
 	</array>
 	<key>NoSyncTipOfTheDayEligibilityBeganTime</key>
 	<real>598796448.25761104</real>
