@@ -10,6 +10,8 @@
 	<true/>
 	<key>AppleAntiAliasingThreshold</key>
 	<integer>1</integer>
+	<key>ApplePressAndHoldEnabled</key>
+	<false/>
 	<key>AppleScrollAnimationEnabled</key>
 	<integer>0</integer>
 	<key>AppleSmoothFixedFontsSizeThreshold</key>
@@ -89,24 +91,26 @@
 	</dict>
 	<key>NSWindow Frame NSNavPanelAutosaveName</key>
 	<string>1113 559 347 181 0 0 1792 1097 </string>
+	<key>NSWindow Frame SUUpdateAlert</key>
+	<string>586 298 700 622 0 0 1792 1097 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 23 1792 1074 0 0 1792 1097 </string>
+	<string>0 26 1768 1067 0 0 1792 1097 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>62 440 1005 587 0 0 1680 1027 </string>
+	<string>377 510 1005 587 0 0 1792 1097 </string>
 	<key>NSWindow Frame iTerm Window 10</key>
 	<string>501 492 990 587 0 0 1792 1097 </string>
 	<key>NSWindow Frame iTerm Window 11</key>
 	<string>522 469 990 587 0 0 1792 1097 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>263 150 1425 891 0 0 1792 1097 </string>
+	<string>232 135 1558 962 0 0 1792 1097 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
-	<string>336 432 990 587 0 0 1792 1097 </string>
+	<string>891 605 1005 587 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 4</key>
-	<string>524 18 1005 587 0 0 1792 1097 </string>
+	<string>39 577 1005 587 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 5</key>
-	<string>591 448 990 587 0 0 1792 1097 </string>
+	<string>1350 448 1005 587 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 6</key>
-	<string>159 95 990 587 0 0 1792 1097 </string>
+	<string>310 155 1005 587 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 7</key>
 	<string>375 510 990 587 0 0 1792 1097 </string>
 	<key>NSWindow Frame iTerm Window 8</key>
@@ -737,6 +741,7 @@
 	<key>NoSyncAllAppVersions</key>
 	<array>
 		<string>3.3.7</string>
+		<string>3.3.9</string>
 	</array>
 	<key>NoSyncBFPRecents</key>
 	<array>
@@ -745,14 +750,14 @@
 	<key>NoSyncFrame_SharedPreferences</key>
 	<dict>
 		<key>screenFrame</key>
-		<string>{{0, 0}, {3008, 1692}}</string>
+		<string>{{2560, 320}, {1792, 1120}}</string>
 		<key>topLeft</key>
-		<string>{568, 993}</string>
+		<string>{2679, 1167}</string>
 	</dict>
 	<key>NoSyncInstallationId</key>
 	<string>32618EF4-3E81-4CA7-B28F-332FC33D14BA</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>33</integer>
+	<integer>53</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -1469,19 +1474,6 @@
 			</dict>
 		</array>
 	</dict>
-	<key>NoSyncSearchHistory2</key>
-	<array>
-		<string>runner0</string>
-		<string>192.168.101.15</string>
-		<string>212,</string>
-		<string>List of</string>
-		<string>activates</string>
-		<string>ch@zeha.at</string>
-		<string>01353</string>
-		<string>Test</string>
-		<string>test</string>
-		<string>submit</string>
-	</array>
 	<key>NoSyncTipOfTheDayEligibilityBeganTime</key>
 	<real>598796448.25761104</real>
 	<key>OpenBookmark</key>
@@ -1538,8 +1530,10 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-12-25T16:32:47Z</date>
+	<date>2020-03-09T21:58:09Z</date>
 	<key>SUSendProfileInfo</key>
+	<false/>
+	<key>SUUpdateRelaunchingMarker</key>
 	<false/>
 	<key>SearchCommand</key>
 	<string>https://startpage.com/search?q=%@</string>
@@ -1567,6 +1561,6 @@
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
 	<key>iTerm Version</key>
-	<string>3.3.7</string>
+	<string>3.3.9</string>
 </dict>
 </plist>
