@@ -18,8 +18,7 @@
 - Keyboard settings: Turn backlight off after 5sec, turn off "Input Sources" shortcuts, add US input source
   - Modifier Keys: Caps Lock = Esc
   - Control strip: remove siri, add lock screen to the left end
-- Mission Control: Hot Corners: right bottom -> Lock Screen
-- Spelling: disable autocorrect
+- Spelling: disable autocorrect, auto-capitalize, double-space-as-dot
 
 Install Office
 
