@@ -30,7 +30,7 @@ sudo scutil --set HostName tl
 
 brew analytics off
 
-brew install openjdk node neomutt neovim git python postgresql yarn pinentry-mac gpg flex bison protobuf-c watch autoconf automake libtool gettext lua lua@5.1 pkg-config pssh qpdf qrencode ragel readline ripgrep ruby sipcalc swaks telnet tmux tnef tokyo-cabinet unifdef openldap findutils exiftool fish minicom lftp yamllint nmap rpm2cpio zaquestion/tap/lab
+brew install openjdk node neomutt neovim git python postgresql yarn pinentry-mac gpg flex bison protobuf-c watch autoconf automake libtool gettext lua lua@5.1 pkg-config pssh qpdf qrencode ragel readline ripgrep ruby sipcalc swaks telnet tmux tnef tokyo-cabinet unifdef openldap findutils exiftool zsh minicom lftp yamllint nmap rpm2cpio zaquestion/tap/lab
 brew cask install ferdi visual-studio-code jetbrains-toolbox spotify mpv vlc puppetlabs/puppet/pdk puppetlabs/puppet/puppet-agent-6 bitwarden fork vmware-fusion homebrew/cask-drivers/logitech-options signal poedit firefox wireshark postman keepassx viscosity handbrake skype-for-business docker imageoptim adobe-creative-cloud sqlworkbenchj lunar
 brew cask install iterm2 --force
 brew tap sqitchers/sqitch
@@ -38,8 +38,8 @@ brew install sqitch --with-postgres-support --with-sqlite-support
 
 mkdir bin Source
 
-sudo vi /etc/shells # add /usr/local/bin/fish
-chsh -s /usr/local/bin/fish
+sudo vi /etc/shells # add /usr/local/bin/zsh
+chsh -s /usr/local/bin/zsh
 
 Spotlight Settings:
 * Privacy: exclude ~/Source, /usr/local, /Applications/Xcode.app
@@ -68,7 +68,7 @@ VSCode:
 TODO:
  - copy viscosity profile
  - copy VPN profiles
- - copy git, ssh, zsh, fish? config
+ - copy git, ssh, zsh config
  - custom fonts
  - copy files
 
