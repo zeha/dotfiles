@@ -27,7 +27,7 @@ sudo scutil --set HostName tl
 
 brew analytics off
 
-brew cask install iterm2 visual-studio-code jetbrains-toolbox spotify mpv vlc fork firefox wireshark viscosity 1password
+brew cask install iterm2 dash visual-studio-code jetbrains-toolbox spotify mpv vlc fork firefox wireshark viscosity 1password
 brew install nmap mtr neovim python telnet ripgrep sqlite neomutt postgresql
 
 Install Tyme app from https://www.tyme-app.com/en/
