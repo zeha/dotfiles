@@ -14,6 +14,9 @@ isfreebsd(){
     [[ $OSTYPE == freebsd* ]] && return 0 || return 1
 }
 
+# Setup PATH from system defaults on macOS.
+isdarwin && [ -x /usr/libexec/path_helper ] && eval `/usr/libexec/path_helper -s`
+
 # Need this here to detect which emacsclient to start.
 if [[ -d $HOME/bin ]]; then
   export PATH=$HOME/bin:$PATH
@@ -536,15 +539,19 @@ export LANG=en_US.UTF-8
 export LC_TIME=de_AT.UTF-8
 export LC_CTYPE=en_US.UTF-8
 unset LC_ALL
-export FULLNAME="Christian Hofstaedtler"
+export FULLNAME="Chris Hofstaedtler"
 export LESSHISTFILE=$HOME/.cache/lesshst
 export CCACHE_DIR=$HOME/.cache/ccache
 
+alias mutt=neomutt
 alias M-ch='mutt -F ~/.mutt/M-ch'
 alias M-zeha='mutt -F ~/.mutt/M-zeha'
 alias M-deb='mutt -F ~/.mutt/M-deb'
 alias M-ddva='mutt -F ~/.mutt/M-ddva'
+alias M-tgf='mutt -F ~/.mutt/M-tgf'
+alias iex='iex --erl "-kernel shell_history enabled"'
 
+zstyle ":chpwd:profiles:$HOME/Source/cardsys(|/|/*)" profile ddva
 zstyle ":chpwd:profiles:$HOME/Source/Deduktiva(|/|/*)" profile ddva
 zstyle ":chpwd:profiles:$HOME/Source/PowerDNS(|/|/*)" profile ddva
 zstyle ":chpwd:profiles:$HOME/Source/yesss(|/|/*)" profile ddva
@@ -553,21 +560,21 @@ zstyle ":chpwd:profiles:$HOME/Source(|/|/*)" profile zeha
 zstyle ":chpwd:profiles:$HOME/Debian(|/|/*)" profile debian
 
 chpwd_profile_initdefaults() {
-  export EMAIL="christian.hofstaedtler@deduktiva.com"
+  export EMAIL="chris.hofstaedtler@deduktiva.com"
   export DEBEMAIL=$EMAIL
   unset DEBSIGN_KEYID
 }
 chpwd_profile_zeha() {
   [[ ${profile} == ${CHPWD_PROFILE} ]] && return 1
   print 'Switching to profile "zeha"'
-  export EMAIL="christian@hofstaedtler.name"
+  export EMAIL="chris@hofstaedtler.name"
   export DEBEMAIL=$EMAIL
   unset DEBSIGN_KEYID
 }
 chpwd_profile_ddva() {
   [[ ${profile} == ${CHPWD_PROFILE} ]] && return 1
   print 'Switching to profile "ddva"'
-  export EMAIL="christian.hofstaedtler@deduktiva.com"
+  export EMAIL="chris.hofstaedtler@deduktiva.com"
   export DEBEMAIL=$EMAIL
   unset DEBSIGN_KEYID
 }
@@ -612,9 +619,9 @@ function lprompt {
   local col red white reset
   col=red
   [[ $RCHOST == nq ]] && col=green
-  [[ $RCHOST == sx ]] && col=green
   [[ $RCHOST == tn ]] && col=green
   [[ $RCHOST == tx ]] && col=green
+  [[ $RCHOST == tl ]] && col=green
   [ $EUID == 0 ] && col=red
   reset="%{$reset_color%}"
   col="${reset}%{$fg_bold[$col]%}"
@@ -624,7 +631,11 @@ function lprompt {
   # a simple modification from the grml prompt
   PROMPT="${red}${EXITCODE}${reset}%D{%R} ${white}"'${debian_chroot:+($debian_chroot)}'"${reset}%n@${col}%m${reset}:%40<...<%B%~%b%<< "'${vcs_info_msg_0_}'"%# "
 }
-lprompt
+if [[ $RCHOST == tl ]]; then
+  . ~/.config/zsh/agnoster.zsh-theme
+else
+  lprompt
+fi
 
 [[ $RCHOST == percival ]] && umask 077 || umask 022
 
