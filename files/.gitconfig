@@ -1,7 +1,7 @@
 [user]
-	name = Christian Hofstaedtler
+	name = Chris Hofstaedtler
 	signingkey = 93052E03
-;	email = christian.hofstaedtler@deduktiva.com
+;	email = chris.hofstaedtler@deduktiva.com
  
 [color]
 	ui = auto
@@ -23,17 +23,17 @@
         theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
 	cleanup = "!git branch --merged | grep -v master | xargs -n1 git branch -d"
     k = log --graph --decorate --pretty=oneline --abbrev-commit --al
-    putz = "!git checkout master && git pull && git cleanup"
+    putz = "!git checkout master && git pull && git cleanup && git remote prune origin"
 
 [push]
   default = current
 
 [merge]
   keepBackup = false
-  tool = p4merge
+  #tool = p4merge
 
 [mergetool "p4merge"]
-  cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge "\"$PWD/$BASE\"" "\"$PWD/$LOCAL\""  "\"$PWD/$REMOTE\"" "\"$PWD/$MERGED\""   
+  cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge \"$PWD/$BASE\" \"$PWD/$LOCAL\"  \"$PWD/$REMOTE\" \"$PWD/$MERGED\"
   keepTemporaries = false
   trustExitCode = false
   keepBackup = false
@@ -43,16 +43,23 @@
 	smudge = git-media-smudge %f
 [user "gitlab"]
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
 	required = true
+	process = git-lfs filter-process
 [gitreview]
 	username = zeha
 [transfer]
 	fsckobjects = true
 [fetch]
-	fsckobjects = true
+    fsckobjects = true
+[fetch "fsck"]
+    zeroPaddedFilemode = ignore
 [receive]
 	fsckobjects = true
 [credential]
 	helper = osxkeychain
+[user "gitlab"]
+	token = qx98xtZch4raRSXifrwm
+[gpg]
+	program = /usr/local/bin/gpg
