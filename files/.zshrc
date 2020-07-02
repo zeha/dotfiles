@@ -633,6 +633,18 @@ function lprompt {
 }
 if [[ $RCHOST == tl ]]; then
   . ~/.config/zsh/agnoster.zsh-theme
+  prompt_time() {
+    prompt_segment $PRIMARY_FG white "%D{%R}"
+  }
+  typeset -aHg AGNOSTER_PROMPT_SEGMENTS=(
+    prompt_status
+    prompt_time
+    prompt_context
+    prompt_virtualenv
+    prompt_dir
+    prompt_git
+    prompt_end
+  )
 else
   lprompt
 fi
