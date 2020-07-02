@@ -14,12 +14,14 @@ rsync -rvv \
     --exclude='.cabal' \
     --exclude='.cache' \
     --exclude='.caff' \
+    --exclude='.cargo' \
     --exclude='.cisco' \
     --exclude='.cocoapods' \
     --exclude='.config/configstore' \
     --exclude='.config/gobby' \
     --exclude='.config/radare2' \
     --exclude='.config/wireshark' \
+    --exclude='.config/yarn' \
     --exclude='.cpanm' \
     --exclude='.cups' \
     --exclude='.docker' \
@@ -43,6 +45,7 @@ rsync -rvv \
     --exclude='.lldb' \
     --exclude='.local' \
     --exclude='.m2' \
+    --exclude='.mix' \
     --exclude='.mplab_ide' \
     --exclude='.mplabcomm' \
     --exclude='.mrtrust' \
@@ -52,11 +55,14 @@ rsync -rvv \
     --exclude='.npm*' \
     --exclude='.oracle_jre_usage' \
     --exclude='.pg_service.conf' \
+    --exclude='.psql_history*' \
     --exclude='.purple' \
     --exclude='.python-eggs' \
+    --exclude='.r10k' \
     --exclude='.rbenv' \
     --exclude='.repoconfig' \
     --exclude='.rnd' \
+    --exclude='.rustup' \
     --exclude='.sbt' \
     --exclude='.serverauth*' \
     --exclude='.sqitch' \
@@ -65,6 +71,7 @@ rsync -rvv \
     --exclude='.thumbnails' \
     --exclude='.vagrant.d' \
     --exclude='.vim/.netrwhist' \
+    --exclude='.virtualenvs' \
     --exclude='.vscode' \
     ~/.[a-zA-Z]* files/
 
