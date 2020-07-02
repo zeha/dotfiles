@@ -63,3 +63,5 @@
 	token = qx98xtZch4raRSXifrwm
 [gpg]
 	program = /usr/local/bin/gpg
+[pull]
+	ff = only
