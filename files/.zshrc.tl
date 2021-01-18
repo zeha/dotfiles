@@ -7,3 +7,6 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 # fuck coredumps on macos, also because of ghc
 ulimit -c 0
+
+# thank you erlang
+ulimit -n 4096

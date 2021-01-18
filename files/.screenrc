@@ -7,10 +7,10 @@ startup_message off
 vbell off
 defscrollback 100000 #default 100
 
-bind j focus down
-bind k focus up
-bind t focus top
-bind b focus bottom
+#bind j focus down
+#bind k focus up
+#bind t focus top
+#bind b focus bottom
 
 shelltitle "sh"
 

@@ -1,7 +1,7 @@
 [user]
 	name = Chris Hofstaedtler
 	signingkey = 93052E03
-;	email = chris.hofstaedtler@deduktiva.com
+	email = chris.hofstaedtler@deduktiva.com
  
 [color]
 	ui = auto
@@ -21,9 +21,9 @@
         snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
         ours   = "!f() { git checkout --ours $@ && git add $@; }; f"
         theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
-	cleanup = "!git branch --merged | grep -v master | xargs -n1 git branch -d"
+	cleanup = !git branch --merged | grep -v $(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@') | xargs -n1 git branch -d
     k = log --graph --decorate --pretty=oneline --abbrev-commit --al
-    putz = "!git checkout master && git pull && git cleanup && git remote prune origin"
+    putz = !git checkout $(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@') && git pull && git cleanup && git remote prune origin
 
 [push]
   default = current
@@ -65,3 +65,5 @@
 	program = /usr/local/bin/gpg
 [pull]
 	ff = only
+[init]
+	defaultBranch = main
