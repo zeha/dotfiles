@@ -60,7 +60,6 @@
 [credential]
 	helper = osxkeychain
 [user "gitlab"]
-	token = qx98xtZch4raRSXifrwm
 [gpg]
 	program = /usr/local/bin/gpg
 [pull]
