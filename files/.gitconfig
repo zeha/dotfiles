@@ -1,6 +1,5 @@
 [user]
 	name = Chris Hofstaedtler
-	signingkey = 93052E03
 [color]
 	ui = auto
 [core]
@@ -8,20 +7,8 @@
 [checkout]
 	workers = 4
 [alias]
-	tree = log --graph --pretty=oneline
-	tagme = !sh -c '[ -z "$1" ] && exit 1 || git tag -u $DEBSIGN_KEYID -s v\"$1\" -m \"release \"$1\"\"' sh
-	out   = push --dry-run
-	lg    = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
-	cat   = !sh -c '[ -z "$3" ] && git show $1 || git show $2:$3'
-        assume   = update-index --assume-unchanged
-        unassume = update-index --no-assume-unchanged
-        assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
-        snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
-        ours   = "!f() { git checkout --ours $@ && git add $@; }; f"
-        theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
 	cleanup = !git branch --merged | grep -v $(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@') | xargs -n1 git branch -d
-    k = log --graph --decorate --pretty=oneline --abbrev-commit --al
-    putz = !git checkout $(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@') && git pull && git cleanup && git remote prune origin
+	putz = !git checkout $(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@') && git pull && git cleanup && git remote prune origin
 [push]
 	default = current
 	negotiate = true
@@ -30,7 +17,6 @@
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
-[user "gitlab"]
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
