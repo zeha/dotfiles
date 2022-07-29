@@ -1,14 +1,12 @@
 [user]
 	name = Chris Hofstaedtler
 	signingkey = 93052E03
-	email = chris.hofstaedtler@deduktiva.com
- 
 [color]
 	ui = auto
- 
 [core]
 	excludesfile = ~/.gitignore_global
-
+[checkout]
+	workers = 4
 [alias]
 	tree = log --graph --pretty=oneline
 	tagme = !sh -c '[ -z "$1" ] && exit 1 || git tag -u $DEBSIGN_KEYID -s v\"$1\" -m \"release \"$1\"\"' sh
@@ -24,20 +22,11 @@
 	cleanup = !git branch --merged | grep -v $(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@') | xargs -n1 git branch -d
     k = log --graph --decorate --pretty=oneline --abbrev-commit --al
     putz = !git checkout $(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@') && git pull && git cleanup && git remote prune origin
-
 [push]
-  default = current
-
+	default = current
+	negotiate = true
 [merge]
-  keepBackup = false
-  #tool = p4merge
-
-[mergetool "p4merge"]
-  cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge \"$PWD/$BASE\" \"$PWD/$LOCAL\"  \"$PWD/$REMOTE\" \"$PWD/$MERGED\"
-  keepTemporaries = false
-  trustExitCode = false
-  keepBackup = false
-
+	keepBackup = false
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
@@ -52,17 +41,16 @@
 [transfer]
 	fsckobjects = true
 [fetch]
-    fsckobjects = true
+	fsckobjects = true
 [fetch "fsck"]
-    zeroPaddedFilemode = ignore
+	zeroPaddedFilemode = ignore
 [receive]
 	fsckobjects = true
 [credential]
 	helper = osxkeychain
 [user "gitlab"]
-[gpg]
-	program = /usr/local/bin/gpg
 [pull]
 	ff = only
+	twohead = ort
 [init]
 	defaultBranch = main
