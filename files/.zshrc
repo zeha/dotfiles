@@ -602,9 +602,9 @@ chpwd_profile_default() {
 }
 chpwd_profile_initdefaults
 
-if [ -n "$SSH_AUTH_SOCK" -a -f $HOME/.ssh/id_rsa ]; then
-  ssh-add -l >/dev/null || ssh-add
-fi
+#if [ -n "$SSH_AUTH_SOCK" -a -f $HOME/.ssh/id_rsa ]; then
+#  ssh-add -l >/dev/null || ssh-add
+#fi
 
 RCHOST=${HOST/.*}
 
@@ -631,7 +631,7 @@ function lprompt {
   # a simple modification from the grml prompt
   PROMPT="${red}${EXITCODE}${reset}%D{%R} ${white}"'${debian_chroot:+($debian_chroot)}'"${reset}%n@${col}%m${reset}:%40<...<%B%~%b%<< "'${vcs_info_msg_0_}'"%# "
 }
-if [[ $RCHOST == tl ]]; then
+if [[ $RCHOST == tiq ]]; then
   . ~/.config/zsh/agnoster.zsh-theme
   prompt_time() {
     prompt_segment $PRIMARY_FG white "%D{%R}"

@@ -1,0 +1,55 @@
+agentpid=$(pgrep gpg-agent)
+if [ ! -z "$agentpid" ]; then
+  export GPG_AGENT_INFO=/Users/ch/.gnupg/S.gpg-agent:${agentpid}:1
+fi
+
+# disable legacy ssh-add -K ...
+export APPLE_SSH_ADD_BEHAVIOR=openssh
+
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.mix/escripts:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+
+source "/opt/homebrew/Cellar/exenv/0.1.0/libexec/../completions/exenv.zsh"
+export PATH="$HOME/.exenv/shims:${PATH}"
+exenv() {
+  local command="$1"
+  if [ "$#" -gt 0 ]; then
+    shift
+  fi
+
+  case "$command" in
+  shell)
+    eval `exenv "sh-$command" "$@"`;;
+  *)
+    command exenv "$command" "$@";;
+  esac
+}
+
+# fuck coredumps on macos, also because of ghc
+ulimit -c 0
+
+ssh() {
+  if [ "$TERM" = "screen" ]; then
+    # Note: Options without parameter were hardcoded,
+    # in order to distinguish an option's parameter from the destination.
+    #
+    #                   s/[[:space:]]*\(\( | spaces before options
+    #     \(-[46AaCfGgKkMNnqsTtVvXxYy]\)\| | option without parameter
+    #                     \(-[^[:space:]]* | option
+    # \([[:space:]]\+[^[:space:]]*\)\?\)\) | parameter
+    #                      [[:space:]]*\)* | spaces between options
+    #                        [[:space:]]\+ | spaces before destination
+    #                \([^-][^[:space:]]*\) | destination
+    #                                   .* | command
+    #                                 /\6/ | replace with destination
+    tmux rename-window "$(echo "$@" \
+      | sed 's/[[:space:]]*\(\(\(-[46AaCfGgKkMNnqsTtVvXxYy]\)\|\(-[^[:space:]]*\([[:space:]]\+[^[:space:]]*\)\?\)\)[[:space:]]*\)*[[:space:]]\+\([^-][^[:space:]]*\).*/\6/')"
+    command ssh "$@"
+    tmux set-window-option automatic-rename on
+  else
+    command ssh "$@"
+  fi
+}
+
