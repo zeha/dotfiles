@@ -28,6 +28,7 @@
 	fsckobjects = true
 [fetch]
 	fsckobjects = true
+	prune = true
 [fetch "fsck"]
 	zeroPaddedFilemode = ignore
 [receive]
@@ -40,3 +41,9 @@
 	twohead = ort
 [init]
 	defaultBranch = main
+[diff]
+	renames = copies
+[protocol]
+	version = 2
+[format]
+	pretty = fuller
