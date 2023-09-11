@@ -5,7 +5,9 @@ Thumbs.db
 *.swp
 .vscode
 .pytest_cache
+.ruff_cache
 .elixir_ls
+/.fleet
 /.idea
 
 # Compiled source #
