@@ -8,6 +8,7 @@ rsync -rvv \
     --exclude='.adobe' \
     --exclude='.android' \
     --exclude='.anyconnect' \
+    --exclude='.asdf' \
     --exclude='.asdm' \
     --exclude='.bash_sessions' \
     --exclude='.bundler' \
