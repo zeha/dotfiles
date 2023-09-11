@@ -11,21 +11,9 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.mix/escripts:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
-source "/opt/homebrew/Cellar/exenv/0.1.0/libexec/../completions/exenv.zsh"
-export PATH="$HOME/.exenv/shims:${PATH}"
-exenv() {
-  local command="$1"
-  if [ "$#" -gt 0 ]; then
-    shift
-  fi
+export SSH_AUTH_SOCK=/Users/ch/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
 
-  case "$command" in
-  shell)
-    eval `exenv "sh-$command" "$@"`;;
-  *)
-    command exenv "$command" "$@";;
-  esac
-}
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 # fuck coredumps on macos, also because of ghc
 ulimit -c 0
