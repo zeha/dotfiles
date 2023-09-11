@@ -556,6 +556,7 @@ zstyle ":chpwd:profiles:$HOME/Source/Deduktiva(|/|/*)" profile ddva
 zstyle ":chpwd:profiles:$HOME/Source/PowerDNS(|/|/*)" profile ddva
 zstyle ":chpwd:profiles:$HOME/Source/yesss(|/|/*)" profile ddva
 zstyle ":chpwd:profiles:$HOME/Source/SynPro(|/|/*)" profile synpro
+zstyle ":chpwd:profiles:$HOME/Source/Debian(|/|/*)" profile debian
 zstyle ":chpwd:profiles:$HOME/Source(|/|/*)" profile zeha
 zstyle ":chpwd:profiles:$HOME/Debian(|/|/*)" profile debian
 
