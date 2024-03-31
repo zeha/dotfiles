@@ -1,0 +1,8 @@
+[ui]
+pager = "less -FRX"
+diff.format = "git"
+
+[user]
+name = "Chris Hofstaedtler"
+email = "chris.hofstaedtler@deduktiva.com"
+
