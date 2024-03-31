@@ -62,7 +62,6 @@ REPORTTIME=5       # report about cpu-/system-/user-time of command if running l
 
 # automatically remove duplicates from these arrays
 typeset -U path cdpath fpath manpath
-# }}}
 
 # {{{ keybindings
 bindkey -e
@@ -292,7 +291,7 @@ info_print () {
 }
 
 set_title () {
-	info_print $'\e]0;' $'\a' "$@"
+    info_print $'\e]0;' $'\a' "$@"
 }
 
 precmd () {
