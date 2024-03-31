@@ -5,24 +5,18 @@
 #setopt xtrace prompt_subst
 
 # .cache/zsh is used for completion cache, and .cache is used for history and zcompdump
-[ -d $HOME/.cache/zsh ] || mkdir -p $HOME/.cache/zsh
-
-isdarwin(){
-    [[ $OSTYPE == darwin* ]] && return 0 || return 1
-}
-isfreebsd(){
-    [[ $OSTYPE == freebsd* ]] && return 0 || return 1
-}
+[[ -d $HOME/.cache/zsh ]] || mkdir -p $HOME/.cache/zsh
 
 # Setup PATH from system defaults on macOS.
-isdarwin && [ -x /usr/libexec/path_helper ] && eval `/usr/libexec/path_helper -s`
+[ -x /usr/libexec/path_helper ] && eval `/usr/libexec/path_helper -s`
 
 # Need this here to detect which emacsclient to start.
 if [[ -d $HOME/bin ]]; then
   export PATH=$HOME/bin:$PATH
 fi
 
-setopt append_history extended_history histignorealldups histignorespace extended_glob longlistjobs notify hash_list_all completeinword nohup auto_pushd pushd_ignore_dups nonomatch nobeep noglobdots noshwordsplit unset nocorrect
+setopt append_history extended_history histignorealldups histignorespace extended_glob longlistjobs notify hash_list_all completeinword nohup auto_pushd pushd_ignore_dups nonomatch nobeep noglobdots noshwordsplit unset nocorrect prompt_subst transient_rprompt
+
 
 check_com() {
     emulate -L zsh
@@ -53,8 +47,7 @@ export SHELL='/bin/zsh'
 # color setup for ls:
 check_com dircolors && eval $(dircolors -b)
 # color setup for ls on OS X / FreeBSD:
-isdarwin && export CLICOLOR=1
-isfreebsd && export CLICOLOR=1
+export CLICOLOR=1
 
 # support colors in less
 export LESS_TERMCAP_mb=$'\E[01;31m'
@@ -309,9 +302,6 @@ precmd () {
 	esac
 }
 
-
-setopt prompt_subst
-setopt transient_rprompt
 
 EXITCODE="%(?..%?%1v )"
 PS2='\`%_> '      # secondary prompt, printed when the shell needs more information to complete a command.
@@ -623,7 +613,7 @@ function lprompt {
   [[ $RCHOST == tn ]] && col=green
   [[ $RCHOST == tx ]] && col=green
   [[ $RCHOST == tl ]] && col=green
-  [ $EUID == 0 ] && col=red
+  [[ $EUID == 0 ]] && col=red
   reset="%{$reset_color%}"
   col="${reset}%{$fg_bold[$col]%}"
   red="${reset}%{$fg_bold[red]%}"
