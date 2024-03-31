@@ -1,5 +1,7 @@
 #!/bin/bash
 # SOURCE: dotfiles/bvm
+set -euxo pipefail
+
 mkdir -p ~/.cache/sbuild/OLD
 mv ~/.cache/sbuild/*tar ~/.cache/sbuild/OLD
 
@@ -20,8 +22,8 @@ for suite in unstable; do
 deb http://deb.debian.org/debian/ $msuite main
 deb-src http://deb.debian.org/debian/ $msuite main
 
-deb http://incoming.debian.org/debian/ buildd-$msuite main
-deb-src http://incoming.debian.org/debian/ buildd-$msuite main
+deb http://incoming.debian.org/debian-buildd/ buildd-$msuite main
+deb-src http://incoming.debian.org/debian-buildd/ buildd-$msuite main
 EOT
 
 done
@@ -32,14 +34,14 @@ for suite in experimental; do
 deb http://deb.debian.org/debian/ $msuite main
 deb-src http://deb.debian.org/debian/ $msuite main
 
-deb http://incoming.debian.org/debian/ buildd-$msuite main
-deb-src http://incoming.debian.org/debian/ buildd-$msuite main
+deb http://incoming.debian.org/debian-buildd/ buildd-$msuite main
+deb-src http://incoming.debian.org/debian-buildd/ buildd-$msuite main
 
 deb http://deb.debian.org/debian/ $suite main
 deb-src http://deb.debian.org/debian/ $suite main
 
-deb http://incoming.debian.org/debian/ buildd-$suite main
-deb-src http://incoming.debian.org/debian/ buildd-$suite main
+deb http://incoming.debian.org/debian-buildd/ buildd-$suite main
+deb-src http://incoming.debian.org/debian-buildd/ buildd-$suite main
 EOT
 
 done
