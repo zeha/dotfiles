@@ -332,7 +332,6 @@ alias mv='nocorrect mv'         # no spelling correction on mv
 alias rm='nocorrect rm'         # no spelling correction on rm
 
 alias s='ssh'
-alias acki='ack -i'
 
 # debian stuff
 if [[ -r /etc/debian_version ]] ; then
@@ -523,7 +522,6 @@ alias emacs='emacs -nw'
 
 # Begin of old .zshrc.local
 
-export HGMERGE=vimdiff
 export LANG=en_US.UTF-8
 export LC_TIME=de_AT.UTF-8
 export LC_CTYPE=en_US.UTF-8
