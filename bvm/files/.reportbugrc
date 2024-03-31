@@ -1,6 +1,4 @@
-# reportbug preferences file
-# character encoding: UTF-8
-# Version of reportbug this preferences file was written by
+# SOURCE: dotfiles/bvm
 reportbug_version "12.0.0"
 # default operating mode: one of: novice, standard, advanced, expert
 mode advanced
@@ -20,4 +18,3 @@ smtphost reportbug.debian.org
 
 no-query-bts
 no-check-available
-

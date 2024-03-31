@@ -1,3 +1,4 @@
+" SOURCE: dotfiles/bvm
 set nocp " do this first
 set viminfo=%,'50,\"100,:100,n~/.cache/viminfo
 set nobackup nodigraph

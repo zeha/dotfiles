@@ -1,3 +1,4 @@
+# SOURCE: dotfiles/bvm
 $chroot_mode = 'unshare';
 $source_only_changes = 1;
 $apt_update = 1;
