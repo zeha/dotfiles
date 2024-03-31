@@ -10,22 +10,24 @@ APT::Install-Recommends 0;
 APT::Periodic::AutocleanInterval 60;
 EOT
 
-sudo tee /etc/systemd/system/virtfs.mount <<EOT
+sudo rm -f /etc/motd
+sudo touch /etc/motd
+
+sudo mkdir -p /media/share
+sudo tee /etc/systemd/system/media-share.mount <<EOT
 [Unit]
 
 [Mount]
 What=share
 Where=/media/share
 Type=9p
-Options=rw,noatime,access=client,trans=virtio
-UID=1000
-GID=1000
+Options=rw,noatime,access=client,trans=virtio,uid=1000,gid=1000
 
 [Install]
 WantedBy=multi-user.target
 EOT
 sudo systemctl daemon-reload
-sudo systemctl enable --now virtfs.mount
+sudo systemctl enable --now media-share.mount
 
 sudo apt install -y \
     locales-all \
