@@ -226,7 +226,7 @@ chpwd_functions=( ${chpwd_functions} chpwd_profiles )
 
 # gather version control information for inclusion in a prompt {{{
 
-if autoload vcs_info; then
+if autoload -Uz vcs_info; then
     # `vcs_info' in zsh versions 4.3.10 and below have a broken `_realpath'
     # function, which can cause a lot of trouble with our directory-based
     # profiles. So:
