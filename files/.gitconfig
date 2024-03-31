@@ -41,9 +41,19 @@
 	twohead = ort
 [init]
 	defaultBranch = main
+[blame]
+	coloring = highlightRecent
 [diff]
 	renames = copies
 [protocol]
 	version = 2
+[gpg]
+	format = ssh
+[url "git@github.com:"]
+	insteadOf = https://github.com/
 [format]
 	pretty = fuller
+[rerere]
+	enabled = true
+[commit]
+	verbose = true
