@@ -1,0 +1,78 @@
+#!/bin/bash
+set -euxo pipefail
+cd ~/
+
+sudo tee /etc/apt/apt.conf <<EOT
+// writte by dotfiles bvm/install
+Acquire::PDiffs "false";
+Acquire::Languages { "en"; };
+APT::Install-Recommends 0;
+APT::Periodic::AutocleanInterval 60;
+EOT
+
+sudo tee /etc/systemd/system/virtfs.mount <<EOT
+[Unit]
+
+[Mount]
+What=share
+Where=/media/share
+Type=9p
+Options=rw,noatime,access=client,trans=virtio
+UID=1000
+GID=1000
+
+[Install]
+WantedBy=multi-user.target
+EOT
+sudo systemctl daemon-reload
+sudo systemctl enable --now virtfs.mount
+
+sudo apt install -y \
+    locales-all \
+    locales- \
+    os-prober- \
+    needrestart \
+    policy-rcd-declarative-deny-all \
+    systemd-zram-generator \
+    qemu-user-agent \
+    avahi-daemon \
+    sbuild \
+    uidmap \
+    mmdebstrap \
+    git \
+    git-email \
+    vim \
+    devscripts \
+    dput \
+    qemu-user-static \
+    arch-test \
+    architecture-properties \
+    ca-certificates \
+    zsh \
+    tmux \
+    diffoscope \
+    git-buildpackage \
+    quilt \
+    rsync \
+    build-essential \
+    curl \
+    neomutt \
+
+mkdir -p Debian
+mkdir -p Source
+(cd Source && git clone git@github.com:zeha/dotfiles)
+
+rsync -r Source/dotfiles/bvm/files/ ~/
+cp Source/dotfiles/files/.zshrc ~/
+cp Source/dotfiles/files/.tmux.conf ~/
+
+chmod 0700 .ssh
+test -e .ssh/id_ed25519 || ssh-keygen -t ed25519
+
+chsh -s /bin/zsh
+
+test -d piuparts || git clone git@salsa.debian.org:debian/piuparts.git
+
+chdist create unstable || true
+
+echo reboot and run zeha-sbuild-recreate-chroots

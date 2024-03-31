@@ -1,0 +1,3 @@
+#!/bin/bash
+export PATH=/sbin:/bin:/usr/sbin:/usr/bin
+exec unshare --pid --fork --mount-proc --map-root-user --map-auto python3 ~/piuparts/piuparts.py -b ~/.cache/sbuild/unstable-arm64.tar "$@"
