@@ -3,7 +3,7 @@ set -euxo pipefail
 cd ~/
 
 sudo tee /etc/apt/apt.conf <<EOT
-// writte by dotfiles bvm/install
+// written by dotfiles bvm/install
 Acquire::PDiffs "false";
 Acquire::Languages { "en"; };
 APT::Install-Recommends 0;
@@ -12,22 +12,6 @@ EOT
 
 sudo rm -f /etc/motd
 sudo touch /etc/motd
-
-sudo mkdir -p /media/share
-sudo tee /etc/systemd/system/media-share.mount <<EOT
-[Unit]
-
-[Mount]
-What=share
-Where=/media/share
-Type=9p
-Options=rw,noatime,access=client,trans=virtio,uid=1000,gid=1000
-
-[Install]
-WantedBy=multi-user.target
-EOT
-sudo systemctl daemon-reload
-sudo systemctl enable --now media-share.mount
 
 sudo apt install -y \
     locales-all \
@@ -59,6 +43,54 @@ sudo apt install -y \
     build-essential \
     curl \
     neomutt \
+
+
+sudo mkdir -p /media/share
+sudo tee /etc/systemd/system/media-share.mount <<EOT
+# written by dotfiles bvm/install
+[Unit]
+
+[Mount]
+What=share
+Where=/media/share
+Type=9p
+Options=rw,noatime,access=client,trans=virtio,uid=1000,gid=1000
+
+[Install]
+WantedBy=multi-user.target
+EOT
+
+sudo tee /etc/modules-load.d/40-bvm.conf <<EOT
+# written by dotfiles bvm/install
+usb_storage
+binfmt_misc
+9p
+9pnet_virtio
+qemu_fw_cfg
+vfat
+netfs
+fat
+virtio_rng
+EOT
+
+sudo tee /etc/systemd/system/bvm-modules-disable.service <<EOT
+# written by dotfiles bvm/install
+[Unit]
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/sbin/sysctl kernel.modules_disabled=1
+TimeoutSec=0
+RemainAfterExit=yes
+GuessMainPID=no
+
+[Install]
+WantedBy=multi-user.target
+EOT
+
+sudo systemctl daemon-reload
+sudo systemctl enable --now media-share.mount bvm-modules-disable.service
 
 mkdir -p Debian
 mkdir -p Source
