@@ -5,13 +5,16 @@ set -euxo pipefail
 mkdir -p ~/.cache/sbuild/OLD
 mv ~/.cache/sbuild/*tar ~/.cache/sbuild/OLD
 
+BASE=http://
+BASE=http://127.0.0.1:3142/
+
 arch=$(dpkg-architecture -q DEB_HOST_ARCH)
 
 for suite in bullseye bookworm testing; do
   msuite=$suite
   mmdebstrap --variant=buildd --skip=output/dev "$msuite" ~/.cache/sbuild/$suite-$arch.tar - <<EOT
-deb http://deb.debian.org/debian/ $msuite main
-deb-src http://deb.debian.org/debian/ $msuite main
+deb ${BASE}deb.debian.org/debian/ $msuite main
+deb-src ${BASE}deb.debian.org/debian/ $msuite main
 EOT
 
 done
@@ -19,11 +22,15 @@ done
 for suite in unstable; do
   msuite=$suite
   mmdebstrap --variant=buildd --skip=output/dev "$msuite" ~/.cache/sbuild/$suite-$arch.tar - <<EOT
-deb http://deb.debian.org/debian/ $msuite main
-deb-src http://deb.debian.org/debian/ $msuite main
+deb ${BASE}deb.debian.org/debian/ $msuite main
+deb-src ${BASE}deb.debian.org/debian/ $msuite main
 
-deb http://incoming.debian.org/debian-buildd/ buildd-$msuite main
-deb-src http://incoming.debian.org/debian-buildd/ buildd-$msuite main
+deb ${BASE}incoming.debian.org/debian-buildd/ buildd-$msuite main
+deb-src ${BASE}incoming.debian.org/debian-buildd/ buildd-$msuite main
+EOT
+
+  mmdebstrap --variant=buildd --skip=output/dev "$msuite" ~/.cache/sbuild/$suite-$arch-autopkgtest.tar - <<EOT
+deb http://deb.debian.org/debian/ $msuite main
 EOT
 
 done
@@ -31,17 +38,17 @@ done
 for suite in experimental; do
   msuite=unstable
   mmdebstrap --variant=buildd --skip=output/dev "$msuite" ~/.cache/sbuild/$suite-$arch.tar - <<EOT
-deb http://deb.debian.org/debian/ $msuite main
-deb-src http://deb.debian.org/debian/ $msuite main
+deb ${BASE}deb.debian.org/debian/ $msuite main
+deb-src ${BASE}deb.debian.org/debian/ $msuite main
 
-deb http://incoming.debian.org/debian-buildd/ buildd-$msuite main
-deb-src http://incoming.debian.org/debian-buildd/ buildd-$msuite main
+deb ${BASE}incoming.debian.org/debian-buildd/ buildd-$msuite main
+deb-src ${BASE}incoming.debian.org/debian-buildd/ buildd-$msuite main
 
-deb http://deb.debian.org/debian/ $suite main
-deb-src http://deb.debian.org/debian/ $suite main
+deb ${BASE}deb.debian.org/debian/ $suite main
+deb-src ${BASE}deb.debian.org/debian/ $suite main
 
-deb http://incoming.debian.org/debian-buildd/ buildd-$suite main
-deb-src http://incoming.debian.org/debian-buildd/ buildd-$suite main
+deb ${BASE}incoming.debian.org/debian-buildd/ buildd-$suite main
+deb-src ${BASE}incoming.debian.org/debian-buildd/ buildd-$suite main
 EOT
 
 done
