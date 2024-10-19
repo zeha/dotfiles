@@ -1,11 +1,12 @@
 #!/bin/bash
 # SOURCE: dotfiles/bvm
-set -euxo pipefail
 
 mkdir -p ~/.cache/sbuild/OLD
 mv ~/.cache/sbuild/*.tar* ~/.cache/sbuild/OLD
 
-BASE=http://
+set -euxo pipefail
+
+#BASE=http://
 BASE=http://127.0.0.1:3142/
 
 arch=$(dpkg-architecture -q DEB_HOST_ARCH)
