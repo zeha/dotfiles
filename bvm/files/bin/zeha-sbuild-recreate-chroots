@@ -13,7 +13,7 @@ arch=$(dpkg-architecture -q DEB_HOST_ARCH)
 
 for suite in bullseye bookworm testing; do
   msuite=$suite
-  mmdebstrap --arch=$arch --variant=apt --skip=output/dev "$msuite" ~/.cache/sbuild/$suite-$arch.tar.gz - <<EOT
+  mmdebstrap --arch=$arch --variant=apt --skip=output/dev "$msuite" ~/.cache/sbuild/$suite-$arch.tar.zst - <<EOT
 deb ${BASE}deb.debian.org/debian/ $msuite main
 deb-src ${BASE}deb.debian.org/debian/ $msuite main
 EOT
@@ -22,7 +22,7 @@ done
 
 for suite in unstable; do
   msuite=$suite
-  mmdebstrap --arch=$arch --variant=apt --skip=output/dev "$msuite" ~/.cache/sbuild/$suite-$arch.tar.gz - <<EOT
+  mmdebstrap --arch=$arch --variant=apt --skip=output/dev "$msuite" ~/.cache/sbuild/$suite-$arch.tar.zst - <<EOT
 deb ${BASE}deb.debian.org/debian/ $msuite main
 deb-src ${BASE}deb.debian.org/debian/ $msuite main
 
@@ -33,7 +33,7 @@ done
 
 for suite in experimental; do
   msuite=unstable
-  mmdebstrap --arch=$arch --variant=apt --skip=output/dev "$msuite" ~/.cache/sbuild/$suite-$arch.tar.gz - <<EOT
+  mmdebstrap --arch=$arch --variant=apt --skip=output/dev "$msuite" ~/.cache/sbuild/$suite-$arch.tar.zst - <<EOT
 deb ${BASE}deb.debian.org/debian/ $msuite main
 deb-src ${BASE}deb.debian.org/debian/ $msuite main
 
