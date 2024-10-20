@@ -29,11 +29,6 @@ deb-src ${BASE}deb.debian.org/debian/ $msuite main
 deb ${BASE}incoming.debian.org/debian-buildd/ buildd-$msuite main
 deb-src ${BASE}incoming.debian.org/debian-buildd/ buildd-$msuite main
 EOT
-
-  mmdebstrap --arch=$arch --variant=apt --skip=output/dev "$msuite" ~/.cache/sbuild/$suite-$arch-autopkgtest.tar.gz - <<EOT
-deb http://deb.debian.org/debian/ $msuite main
-EOT
-
 done
 
 for suite in experimental; do
