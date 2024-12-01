@@ -1,9 +1,0 @@
-# SOURCE: dotfiles/bvm
-$chroot_mode = 'unshare';
-$source_only_changes = 1;
-$apt_update = 1;
-#$run_autopkgtest = 1;
-#$autopkgtest_root_args = '';
-#$autopkgtest_opts = [ '--apt-upgrade', '--', 'unshare', '--release', '%r', '--arch', '%a' ];
-
-1;
