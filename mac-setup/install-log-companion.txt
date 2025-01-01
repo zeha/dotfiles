@@ -18,19 +18,85 @@
 - Sound: select 'Tink' sound effect, move Alert Volume to 50%
   Show volume in menu bar
 
-Install Office
-
-Install brew (let it install the CLT):
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
 sudo scutil --set HostName tl
+
+Install from App Store: Xcode, Wipr 2, Outlook, Word, Excel, OneDrive, NextDNS, 1Password for Safari, Bitwarden, Tailscale
+
+Install brew (let it install the CLT) using the Installer package from https://brew.sh/
 
 brew analytics off
 
-brew cask install alacritty dash visual-studio-code jetbrains-toolbox spotify mpv vlc fork firefox wireshark viscosity 1password
-brew install nmap mtr neovim python telnet ripgrep sqlite neomutt postgresql
+brew install --cask \
+  1password \
+  affinity-designer \
+  affinity-photo \
+  affinity-publisher \
+  alacritty \
+  cyberduck \
+  dash \
+  eclipse-ide \
+  firefox \
+  fork \
+  google-chrome \
+  imhex \
+  jetbrains-toolbox \
+  keepassxc \
+  keymapp \
+  little-snitch \
+  localsend \
+  mpv \
+  omnigraffle \
+  poedit \
+  portfolioperformance \
+  rectangle \
+  secretive \
+  steermouse \
+  soapui \
+  spotify \
+  temurin \
+  tyme \
+  utm \
+  viscosity \
+  vlc \
+  wireshark \
+  zed \
 
-Install Tyme app from https://www.tyme-app.com/en/
+brew install \
+  asdf \
+  black \
+  certifi \
+  clang-format \
+  curl \
+  git \
+  git-filter-repo \
+  git-gui \
+  git-lfs \
+  gnu-tar \
+  grpc \
+  grpcurl \
+  htop \
+  hugo \
+  mosh \
+  mtr \
+  neomutt \
+  neovim \
+  nmap \
+  picotool \
+  pinentry-mac \
+  podman \
+  podman-compose \
+  postgresql \
+  python \
+  python@3.13 \
+  ripgrep \
+  rust \
+  sqlite \
+  telnet \
+  telnet \
+  tmate \
+  tmux \
+  zsh \
+
 
 mkdir bin Source
 
@@ -38,20 +104,24 @@ sudo vi /etc/shells # add /usr/local/bin/zsh
 chsh -s /usr/local/bin/zsh
 
 Spotlight Settings:
-* Privacy: exclude ~/Source, /usr/local
-* Search Results: disable Spotlight Suggestions, Developer, Films, Bookmarks&History
+* Privacy: exclude ~/Source, /opt/homebrew
+* Search Results: disable Siri Suggestions, Developer, Movies, Tips, Websites
 
 Enable 'Tap to click' in Trackpad settings
-
-Install https://su.airbuddy.app
 
 VSCode:
 - Install: Dracula Theme, Python, Puppet, C++, GitLens
 
 TODO:
+ - copy internet accounts
+ - log into 1password
+ - copy custom safari extension
+ - install 1password, Firefox Multi-Account Countainers, uBlock Origin into firefox
  - copy viscosity profile
  - copy VPN profiles
  - copy git, ssh, zsh config
+ - import steermouse settings
+ - import Rectangle settings
  - custom fonts
  - copy files
 
