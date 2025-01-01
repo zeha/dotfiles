@@ -23,6 +23,7 @@ rsync -rvv \
     --exclude='.config/radare2' \
     --exclude='.config/wireshark' \
     --exclude='.config/yarn' \
+    --exclude='.cpan' \
     --exclude='.cpanm' \
     --exclude='.cups' \
     --exclude='.docker' \
@@ -57,6 +58,8 @@ rsync -rvv \
     --exclude='.node-gyp' \
     --exclude='.npm*' \
     --exclude='.pg_service.conf' \
+    --exclude='.pico-sdk' \
+    --exclude='.platformio' \
     --exclude='.psql_history*' \
     --exclude='.pyenv' \
     --exclude='.r10k' \
