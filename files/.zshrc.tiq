@@ -6,12 +6,15 @@ fi
 # disable legacy ssh-add -K ...
 export APPLE_SSH_ADD_BEHAVIOR=openssh
 
-export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 export PATH="$HOME/.mix/escripts:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
 export SSH_AUTH_SOCK=/Users/ch/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
+
+# Avoid leaking passwords on fallback
+export PGSSLMODE=require
 
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
 
@@ -40,4 +43,6 @@ ssh() {
     command ssh "$@"
   fi
 }
+
+alias cyme="cyme --color=never"
 

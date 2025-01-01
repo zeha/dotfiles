@@ -42,7 +42,6 @@ export EDITOR=vim
 #  fi
 #}
 export PAGER=${PAGER:-less}
-export SHELL='/bin/zsh'
 
 # color setup for ls:
 check_com dircolors && eval $(dircolors -b)
@@ -62,6 +61,11 @@ REPORTTIME=5       # report about cpu-/system-/user-time of command if running l
 
 # automatically remove duplicates from these arrays
 typeset -U path cdpath fpath manpath
+
+fpath=(
+    /opt/homebrew/share/zsh/site-functions
+    $fpath
+)
 
 # {{{ keybindings
 bindkey -e
@@ -93,15 +97,18 @@ elif [[ -n "$terminfo[cbt]" ]]; then # required for GNU screen
     bindkey "$terminfo[cbt]"  reverse-menu-complete
 fi
 
-autoload history-search-end
+# Autoload zsh's hook system early, so we can use it whenever we need.
+autoload -U add-zsh-hook || add-zsh-hook () { :; }
+
+autoload -U history-search-end
 
 # completion system
 autoload compinit && compinit -d $HOME/.cache/zcompdump
 
-autoload zed # use ZLE editor to edit a file or function
+autoload -U zed # use ZLE editor to edit a file or function
 
 zmodload -i zsh/complist
-zmodload -a zsh/stat zstat
+#zmodload -a zsh/stat zstat
 
 # press esc-e for editing command line in $EDITOR or $VISUAL
 if autoload edit-command-line && zle -N edit-command-line ; then
@@ -277,6 +284,14 @@ setup_vcsinfo() {
 setup_vcsinfo
 # }}}
 
+function inside_multiplexer () {
+    case "$TERM" in
+    screen|screen-*) return 0 ;;
+    tmux|tmux-*)     return 0 ;;
+    esac
+    return 1
+}
+
 info_print () {
 	local esc_begin esc_end
 	esc_begin="$1" 
@@ -290,16 +305,60 @@ info_print () {
 	printf '%s' "${esc_end}"
 }
 
+function ESC_print () {
+    info_print $'\ek' $'\e\\' "$@"
+}
 set_title () {
     info_print $'\e]0;' $'\a' "$@"
 }
 
-precmd () {
-	vcs_info
-	case $TERM in
-		(xterm*|rxvt*) set_title ${(%):-"%n@%m: %~"} ;;
-	esac
+function grml_reset_screen_title () {
+    # adjust title of xterm
+    # see http://www.faqs.org/docs/Linux-mini/Xterm-Title.html
+    [[ ${NOTITLE:-} -gt 0 ]] && return 0
+    case $TERM in
+        (xterm*|rxvt*|alacritty|foot)
+            set_title ${(%):-"%n@%m: %~"}
+            ;;
+    esac
 }
+
+function grml_vcs_to_screen_title () {
+    if inside_multiplexer ; then
+        if [[ -n ${vcs_info_msg_1_} ]] ; then
+            ESC_print ${vcs_info_msg_1_}
+        else
+            ESC_print "zsh"
+        fi
+    fi
+}
+
+function grml_cmd_to_screen_title () {
+    # get the name of the program currently running and hostname of local
+    # machine set screen window title if running in a screen
+    if inside_multiplexer ; then
+        local CMD="${1[(wr)^(*=*|sudo|ssh|-*)]}"
+        ESC_print ${CMD}
+    fi
+}
+
+function grml_control_xterm_title () {
+    case $TERM in
+        (xterm*|rxvt*|alacritty|foot)
+            set_title "${(%):-"%n@%m:"}" "$2"
+            ;;
+    esac
+}
+
+if [[ $NOPRECMD -eq 0 ]]; then
+    add-zsh-hook precmd grml_reset_screen_title
+    add-zsh-hook precmd grml_vcs_to_screen_title
+    add-zsh-hook preexec grml_cmd_to_screen_title
+    if [[ $NOTITLE -eq 0 ]]; then
+        add-zsh-hook preexec grml_control_xterm_title
+    fi
+fi
+
 
 
 EXITCODE="%(?..%?%1v )"
@@ -332,6 +391,9 @@ alias mv='nocorrect mv'         # no spelling correction on mv
 alias rm='nocorrect rm'         # no spelling correction on rm
 
 alias s='ssh'
+
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
 
 # debian stuff
 if [[ -r /etc/debian_version ]] ; then
@@ -544,6 +606,7 @@ zstyle ":chpwd:profiles:$HOME/Source/PowerDNS(|/|/*)" profile ddva
 zstyle ":chpwd:profiles:$HOME/Source/yesss(|/|/*)" profile ddva
 zstyle ":chpwd:profiles:$HOME/Source/SynPro(|/|/*)" profile synpro
 zstyle ":chpwd:profiles:$HOME/Source/Debian(|/|/*)" profile debian
+zstyle ":chpwd:profiles:$HOME/Source/grml(|/|/*)" profile grml
 zstyle ":chpwd:profiles:$HOME/Source(|/|/*)" profile zeha
 zstyle ":chpwd:profiles:$HOME/Debian(|/|/*)" profile debian
 
@@ -581,10 +644,17 @@ chpwd_profile_debian() {
   export DEBSIGN_KEYID=93052E03
   export MAILRC=~/.mailrc-debian
 }
+chpwd_profile_grml() {
+  [[ ${profile} == ${CHPWD_PROFILE} ]] && return 1
+  print 'Switching to profile "grml"'
+  export EMAIL="ch@grml.org"
+  export DEBEMAIL=$EMAIL
+  export DEBSIGN_KEYID=93052E03
+  export MAILRC=~/.mailrc-debian
+}
 
 chpwd_profile_default() {
   [[ ${profile} == ${CHPWD_PROFILE} ]] && return 1
-  [[ ${CHPWD_PROFILE} == "pylons" ]] && deactivate && unset debian_chroot
   unset MAILRC
   chpwd_profile_initdefaults
 }
