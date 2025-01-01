@@ -137,5 +137,5 @@ UTM:
 
 JetBrains:
 * use toolbox to install PyCharm, CLion, RustRover, DataGrip, Gateway, IntelliJ Ultimate
-* copy settings from old machine
+* enable Settings Sync in one app for all apps
 
