@@ -42,6 +42,7 @@ brew install --cask \
   jetbrains-toolbox \
   keepassxc \
   keymapp \
+  kicad \
   little-snitch \
   localsend \
   mpv \
@@ -50,11 +51,12 @@ brew install --cask \
   portfolioperformance \
   rectangle \
   secretive \
-  steermouse \
   soapui \
   spotify \
+  steermouse \
   temurin \
   tyme \
+  typora \
   utm \
   viscosity \
   vlc \
@@ -67,6 +69,7 @@ brew install \
   certifi \
   clang-format \
   curl \
+  cyme \
   git \
   git-filter-repo \
   git-gui \
@@ -124,4 +127,15 @@ TODO:
  - import Rectangle settings
  - custom fonts
  - copy files
+
+podman setup:
+* copy creds from old machine (.config/containers)
+* podman machine init --cpus 2 --now
+
+UTM:
+* import VM images from old machine
+
+JetBrains:
+* use toolbox to install PyCharm, CLion, RustRover, DataGrip, Gateway, IntelliJ Ultimate
+* copy settings from old machine
 
