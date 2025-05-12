@@ -234,16 +234,6 @@ chpwd_functions=( ${chpwd_functions} chpwd_profiles )
 # gather version control information for inclusion in a prompt {{{
 
 if autoload -Uz vcs_info; then
-    # `vcs_info' in zsh versions 4.3.10 and below have a broken `_realpath'
-    # function, which can cause a lot of trouble with our directory-based
-    # profiles. So:
-    if [[ ${ZSH_VERSION} == 4.3.<-10> ]] ; then
-        function VCS_INFO_realpath () {
-            setopt localoptions NO_shwordsplit chaselinks
-            ( builtin cd -q $1 2> /dev/null && pwd; )
-        }
-    fi
-
     zstyle ':vcs_info:*' max-exports 2
 
     if [[ -o restricted ]]; then
@@ -352,6 +342,7 @@ function grml_control_xterm_title () {
 
 if [[ $NOPRECMD -eq 0 ]]; then
     add-zsh-hook precmd grml_reset_screen_title
+    add-zsh-hook precmd vcs_info
     add-zsh-hook precmd grml_vcs_to_screen_title
     add-zsh-hook preexec grml_cmd_to_screen_title
     if [[ $NOTITLE -eq 0 ]]; then
@@ -596,6 +587,7 @@ alias mutt=neomutt
 alias M-ch='mutt -F ~/.mutt/M-ch'
 alias M-zeha='mutt -F ~/.mutt/M-zeha'
 alias M-deb='mutt -F ~/.mutt/M-deb'
+alias M-grml='mutt -F ~/.mutt/M-grml'
 alias M-ddva='mutt -F ~/.mutt/M-ddva'
 alias M-tgf='mutt -F ~/.mutt/M-tgf'
 alias iex='iex --erl "-kernel shell_history enabled"'
@@ -664,14 +656,11 @@ chpwd_profile_initdefaults
 #  ssh-add -l >/dev/null || ssh-add
 #fi
 
-RCHOST=${HOST/.*}
+if [[ "$TERM" == dumb ]] ; then
+  PROMPT="${EXITCODE}${debian_chroot:+($debian_chroot)}%n@%m %40<...<%B%~%b%<< %# "
+fi
 
 function lprompt {
-  if [[ "$TERM" == dumb ]] ; then
-    PROMPT="${EXITCODE}${debian_chroot:+($debian_chroot)}%n@%m %40<...<%B%~%b%<< %# "
-    return
-  fi
-
   autoload colors && colors
 
   local col red white reset
@@ -689,29 +678,16 @@ function lprompt {
   # a simple modification from the grml prompt
   PROMPT="${red}${EXITCODE}${reset}%D{%R} ${white}"'${debian_chroot:+($debian_chroot)}'"${reset}%n@${col}%m${reset}:%40<...<%B%~%b%<< "'${vcs_info_msg_0_}'"%# "
 }
-if [[ $RCHOST == tiq ]]; then
-  . ~/.config/zsh/agnoster.zsh-theme
-  prompt_time() {
-    prompt_segment $PRIMARY_FG white "%D{%R}"
-  }
-  typeset -aHg AGNOSTER_PROMPT_SEGMENTS=(
-    prompt_status
-    prompt_time
-    prompt_context
-    prompt_virtualenv
-    prompt_dir
-    prompt_git
-    prompt_end
-  )
-else
+
+RCHOST=${HOST/.*}
+[[ -r ~/.zshrc.$RCHOST ]] && source ~/.zshrc.$RCHOST
+
+if [[ "$TERM" != dumb ]] ; then
   lprompt
 fi
 
-[[ $RCHOST == percival ]] && umask 077 || umask 022
-
-[[ -r ~/.zshrc.$RCHOST ]] && source ~/.zshrc.$RCHOST
-
 unset RCHOST
+unfunction lprompt
 
 #unsetopt xtrace
 #exec 2>&3 3>&-
