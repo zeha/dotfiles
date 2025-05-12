@@ -45,4 +45,6 @@ ssh() {
 }
 
 alias cyme="cyme --color=never"
+alias vim=nvim
+alias vimdiff="nvim -d"
 
