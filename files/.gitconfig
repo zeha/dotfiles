@@ -9,8 +9,10 @@
 [alias]
 	cleanup = !git branch --merged | grep -v $(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@') | xargs -n1 git branch -d
 	putz = !git checkout $(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@') && git pull && git cleanup && git remote prune origin
+	mr = "!f() { git fetch -fu ${2:-$(git remote |grep ^upstream || echo origin)} refs/merge-requests/$1/head:mr/$1 && git checkout mr/$1; }; f"
 [push]
 	default = current
+	autoSetupRemote = true
 	negotiate = true
 [merge]
 	keepBackup = false
@@ -44,16 +46,34 @@
 [blame]
 	coloring = highlightRecent
 [diff]
-	renames = copies
+	renames = true
+	algorithm = histogram
+	colorMoved = plain
+	mnemonicPrefix = true
 [protocol]
 	version = 2
 [gpg]
 	format = ssh
 [url "git@github.com:"]
 	insteadOf = https://github.com/
+[url "git@salsa.debian.org:"]
+	insteadOf = https://salsa.debian.org/
+
 [format]
 	pretty = fuller
 [rerere]
 	enabled = true
+	autoupdate = true
 [commit]
 	verbose = true
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[tag]
+	sort = version:refname
+
+[rebase]
+	autoSquash = false
+	autoStash = true
+	updateRefs = true

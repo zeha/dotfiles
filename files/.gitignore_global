@@ -9,6 +9,8 @@ Thumbs.db
 .elixir_ls
 /.fleet
 /.idea
+/.claude
+/CLAUDE*.md
 
 # Compiled source #
 ###################
