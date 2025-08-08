@@ -77,3 +77,8 @@
 	autoSquash = false
 	autoStash = true
 	updateRefs = true
+
+# Include machine-specific config
+# Placed at end so local settings can override shared defaults
+[include]
+	path = ~/.gitconfig_local
